@@ -3,19 +3,8 @@
     margin: 0;
 }
 
-
-nav{
-    background-color: {{color2}};
-    color: {{color1}};
-    font-size: 2em;
-    width: 30vw;
-    display: flex;
-    justify-content: center;
-    margin: 3vh auto;
-}
-
 div{
-    background-color: pink;
+    background-color: rgb(159, 64, 80);
     width: 70px;
     height: 70px;
     display: inline-block;
@@ -23,17 +12,6 @@ div{
 }
 
 
-main{
-    width: 90vw;
-    height: 100vh;
-    margin: 0 auto;
+body{
     text-align: center;
-}
-
-.colorOne{
-    background-color: {{color1}};
-}
-
-.colorTwo{
-    background-color: {{color2}};
 }
