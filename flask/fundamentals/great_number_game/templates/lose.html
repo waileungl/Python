@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        #div{
+            width: 400px;
+            height: 400px;
+            margin: 30px auto;
+            text-align: center;
+            font-size: 1.5em;
+            color: aliceblue;
+            padding-top: 80px;
+            border-radius: 20px;
+            background-color: {{session['color']}};
+        }
+    </style>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="text-bg-danger p-3">Welcome to the Great Number Game!</h1>
+
+    <h2>I am thinking of a number between 1 and 100</h2>
+
+    <h2>Take a GUESS!</h2>
+
+    <div id="div">
+        <h1>{{session['response'] | safe}}</h1>
+        <form action='/again' method='post'>
+            <input id="buttonB" type="submit" class="btn btn-success" value="TRY AGAIN">
+        </form>
+    </div>
+
+    <h2 class="text-bg-warning p-3">You have tried {{session['attempt']}} times, {{session['left']}} guess left</h2>
+
+</body>
+</html>

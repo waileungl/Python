@@ -1,0 +1,112 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+button{
+    padding: 10px;
+    background-color: cadetblue;
+    margin: 50px;
+}
+
+body{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#Reset{
+    padding: 10px;
+    background-color: beige;
+    margin: 50px;
+}
+
+input{
+    margin: 30px;
+    background-color: whitesmoke;
+    padding: 10px;
+}
+
+#smallerTable{
+    margin: 50px;
+    width: 500px;
+}
+
+form{
+    text-align: center;
+}
+
+button{
+    padding: 10px;
+    background-color: cadetblue;
+    margin: 50px;
+}
+
+body{
+    text-align: center;
+}
+
+#Reset{
+    padding: 10px;
+    background-color: beige;
+    margin: 50px;
+}
+
+input{
+    margin: 15px;
+    background-color: whitesmoke;
+    padding: 10px;
+}
+
+button{
+    padding: 10px;
+    background-color: palegreen;
+    margin: 50px;
+}
+
+body{
+    text-align: center;
+}
+
+#Reset{
+    padding: 10px;
+    background-color: beige;
+    margin: 50px;
+}
+
+input{
+    margin: 10px;
+    background-color: whitesmoke;
+    padding: 10px;
+}
+
+#guessB{
+    margin-bottom: 30px;
+}
+
+button{
+    padding: 10px;
+    background-color: palegreen;
+    margin: 50px;
+}
+
+body{
+    text-align: center;
+}
+
+#Reset{
+    padding: 10px;
+    background-color: beige;
+    margin: 50px;
+}
+
+input{
+    margin: 10px;
+    background-color: whitesmoke;
+    padding: 10px;
+}
+
+#buttonB{
+    margin-top: 20px;
+}
