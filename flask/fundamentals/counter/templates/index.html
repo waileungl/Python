@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        button{
+            padding: 10px;
+            background-color: cadetblue;
+            margin: 50px;
+        }
+
+        body{
+            text-align: center;
+        }
+
+        #Reset{
+            padding: 10px;
+            background-color: beige;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Counter</h1>
+
+    <h2>{{session['click']}}</h2>
+
+    <h1>Times that you submitted</h1>
+
+    <h2>{{session['visit']}}</h2>
+
+    <form action="/submit" method="post">
+        <button type="submit" name="click" value = "1" id = "click">Plus</button>
+        <button type="submit" name = "click" value = "-1" id = "Minus">Plus 2</button>
+        <button type="submit" name = "click" value = "0" id = "reset">Reset</button>
+    </form>
+
+    <form action="/input" method="post">
+        <input type="number" name="givenNum" value = "">
+        <input type="submit" value="increase">
+    </form>
+</body>
+</html>
