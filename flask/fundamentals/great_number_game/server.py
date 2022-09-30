@@ -30,10 +30,6 @@ def form():
     result = session['answer']
     session['left'] -= 1
     session['attempt'] += 1
-    if session['left'] <= 0:
-        session['response'] = f"YOU LOSE, <br> {result} was the number"
-        session['color'] = 'red'
-        return render_template('lose.html')
     if int(request.form['givenNum']) > session['answer']:
         session['response'] = "Too high"
         session['color'] = 'red'
@@ -44,6 +40,10 @@ def form():
         session['response'] = f"Congratulation! <br>{result} was the number"
         session['color'] = 'green'
         return render_template('win.html')
+    if session['left'] <= 0:
+        session['response'] = f"YOU LOSE, <br> {result} was the number"
+        session['color'] = 'red'
+        return render_template('lose.html')
     return redirect('/gaming')
 
 @app.route('/record', methods=['POST'])
