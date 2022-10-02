@@ -21,25 +21,25 @@ def calculate():
     date = datetime.now().strftime('%Y/%m/%d %H:%M %p')
     gold = eval(request.form['dig'])
     place = request.form['place']
-    session['count'] += eval(request.form['dig'])
+    session['count'] += gold
     if gold < 0:
         loss = abs(gold)
         session['list'] = f"<p class = 'loss'>Entered {place} and lost {loss} golds... Ouch.. ({date})</p>" + session['list']
     else:
         session['list'] = f"<p class = 'win'>Earned {gold} golds from the {place}! ({date})</p>" + session['list']
-    if session['count'] >= 500:
+    if session['count'] >= 250:
         return redirect("/win")
-    if session['left'] <= 0:
+    elif session['left'] <= 0:
         return redirect("/lose")
     return redirect('/')
 
-@app.route('/win', methods = ['POST'])
+@app.route('/win')
 def win():
-    return render_template(win.html)
+    return render_template("win.html")
 
-@app.route('/lose', methods = ['POST'])
+@app.route('/lose')
 def lose():
-    return render_template(lose.html)
+    return render_template("lose.html")
 
 @app.route('/reset', methods = ['POST'])
 def reset():
@@ -50,7 +50,7 @@ if __name__ == "__main__":
     app.run(debug=True)
 
 
-
+#original code(using if..elf)
 
 # @app.route('/findGold', methods = ['POST'])
 # def calculate():

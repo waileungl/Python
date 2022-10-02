@@ -1,1 +1,13 @@
 {% extends 'index.html' %}
+
+{% block title %}WINNER{% endblock %}
+
+{% block head %}
+
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<h1><span style="color: rgb(255, 255, 0)" >YOU WIN!</span></h1>
+<img src="{{ url_for('static', filename='/img/win.png') }}" alt="winner">
+{% endblock %}
