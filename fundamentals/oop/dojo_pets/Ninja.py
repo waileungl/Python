@@ -7,29 +7,29 @@ class Ninja():
         self.pet_food = pet_food
         self.pet = pet
 
-    def walk(self, pet):
-        pet.play()
+    def walk(self):
+        self.pet.play()
         return self
 
 
-    def feed(self, pet):
-        pet.eat()
+    def feed(self):
+        self.pet.eat()
         return self
 
-    def bathe(self, pet):
-        pet.noise()
+    def bathe(self):
+        self.pet.noise()
         return self
 
 
 
 myDog = Pet('GOGO', 'domestic', 'none')
 myCat = Cat('Ieon', 'domestic', 'none')
-Me = Ninja('William', 'Liu', 'Candy', 'None', 'a dog and a cat')
-Me.feed(myDog).walk(myDog).bathe(myDog)
+Me = Ninja('William', 'Liu', 'Candy', 'None', myCat)
+Me.feed().walk().bathe()
 #health=115, Woof!, energy=105
 print('my dog', myDog.health, myDog.energy)
 
-Me.feed(myCat).walk(myCat).bathe(myCat)
-#health=110, Meow!, energy=90
-print('my cat', myCat.health, myCat.energy)
+# Me.feed().walk().bathe()
+# #health=110, Meow!, energy=90
+# print('my cat', myCat.health, myCat.energy)
 
