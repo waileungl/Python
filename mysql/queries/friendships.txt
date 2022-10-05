@@ -1,0 +1,36 @@
+-- 1) Query: Create 6 new users
+INSERT INTO users (first_name, last_name, created_at, updated_at)
+VALUES ('River', 'He', now(), now()), ('Denna', 'Yu', now(), now()), ('Joyce', 'Yu', now(), now()), ('Albee', 'Yang', now(), now()), ('Mike', 'Kok', now(), now()), ('William', 'Lau', now(), now());
+
+-- 2) connecting friends with users
+INSERT INTO friendships(id, user_id, friend_id, created_at, updated_at)
+VALUES (1, 1, 2, now(), now()), (2, 1, 4, now(), now()), (3, 1, 6, now(), now()), (4, 2, 1, now(), now()), (5, 2, 3, now(), now()), (6, 2, 5, now(), now()), (7, 3, 2, now(), now()), (8, 3, 5, now(), now()), (9, 4, 3, now(), now()), (10, 5, 1, now(), now()), (11, 5, 6, now(), now()), (12, 6, 2, now(), now()), (13, 6, 3, now(), now());
+
+-- 3) Query: Display the relationships created as shown in the table in the above image
+SELECT users.first_name AS first_name, users.last_name AS last_name, friends.first_name AS friend_first_name, friends.last_name AS friend_last_name FROM users
+JOIN friendships ON users.id = friendships.user_id
+LEFT JOIN users AS friends ON friends.id = friendships.friend_id
+ORDER BY first_name;
+
+-- 4)NINJA Query: Return all users who are friends with the first user, make sure their names are displayed in results.
+SELECT users.id, users.first_name AS first_name, users.last_name AS last_name, friends.first_name AS friend_first_name, friends.last_name AS friend_last_name FROM users
+JOIN friendships ON users.id = friendships.user_id
+LEFT JOIN users AS friends ON friends.id = friendships.friend_id
+WHERE users.id = 1;
+
+-- 5) NINJA Query: Return the count of all friendships
+SELECT COUNT(*) AS count_of_friendships FROM friendships;
+
+-- 6)NINJA Query: Find out who has the most friends and return the count of their friends.
+SELECT users.first_name, users.last_name, COUNT(user_id) AS Number_of_friends FROM friendships
+JOIN users ON users.id = friendships.user_id
+GROUP BY user_id
+ORDER BY COUNT(user_id) DESC
+LIMIT 1;
+
+-- 7)NINJA Query: Return the friends of the third user in alphabetical order.
+SELECT friends.first_name, friends.last_name FROM friendships
+LEFT JOIN users as friends ON friendships.friend_id = friends.id
+WHERE friendships.user_id = 3
+ORDER BY friends.first_name ASC;
+

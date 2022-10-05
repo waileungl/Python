@@ -1,0 +1,38 @@
+1）Query: Create 3 new dojos
+INSERT INTO dojos (name, created_at, updated_at)
+VALUES('San Jose', now(), now()), ('Seattle', now(), now()), ('New York', now(), now());
+
+2）Query: Delete the 3 dojos you just created
+DELETE FROM dojos
+WHERE id < 4;
+
+3）Query: Create 3 more dojos
+INSERT INTO dojos (name, created_at, updated_at)
+VALUES('William Liu', now(), now()), ('Mike Kok', now(), now()), ('Bob Liu', now(), now());
+
+4）Query: Create 3 ninjas that belong to the first dojo
+INSERT INTO ninjas (first_name, last_name, age, dojo_id, created_at, updated_at)
+VALUES('William', 'Liu', 26, 16, now(), now()), ('Mike', 'Kok', 24, 16, now(), now()), ('Bob', 'Liu', 30, 16, now(), now());
+
+5）Query: Create 3 ninjas that belong to the second dojo
+INSERT INTO ninjas (first_name, last_name, age, dojo_id, created_at, updated_at)
+VALUES('Will', 'Lau', 21, 17, now(), now()), ('Miki', 'Guo', 29, 17, now(), now()), ('Alex', 'Huang', 40, 17, now(), now());
+
+6）Query: Create 3 ninjas that belong to the third dojo
+INSERT INTO ninjas (first_name, last_name, age, dojo_id, created_at, updated_at)
+VALUES('Vita', 'Pancakes', 20, 18, now(), now()), ('Meiqi', 'bae', 18, 18, now(), now()), ('Joyce', 'Yu', 20, 18, now(), now());
+
+7）Query: Retrieve all the ninjas from the first dojo
+SELECT * FROM dojos
+JOIN ninjas ON dojos.id = ninjas.dojo_id
+WHERE name = 'San Jose';
+
+8）Query: Retrieve all the ninjas from the last dojo
+SELECT * FROM dojos
+JOIN ninjas ON dojos.id = ninjas.dojo_id
+WHERE name = 'New York';
+
+9）Query: Retrieve the last ninja's dojo
+SELECT first_name, last_name, name AS dojo_name FROM ninjas
+JOIN dojos ON dojos.id = ninjas.dojo_id
+WHERE first_name = 'Joyce';
