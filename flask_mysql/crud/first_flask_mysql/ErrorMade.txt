@@ -1,0 +1,9 @@
+1) Miss spelling table name in first_flask_schema to 'firends'
+TypeError: 'bool' object is not iterable
+
+when it corrected to friends and forward engineer it again
+or
+change the query code in python to " SELECT * FROM 'firends' "
+
+it work!
+

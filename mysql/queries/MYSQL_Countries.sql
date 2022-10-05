@@ -44,8 +44,7 @@ and countries.life_expectancy > 75;
 SELECT countries.name, cities.name, cities.population, cities.district FROM cities
 JOIN countries ON cities.country_code = countries.code
 WHERE cities.population > 500000 
-and countries.name = 'Argentina' 
-and cities.district = 'Buenos Aires';
+and countries.name = 'Argenand cities.district = 'Buenos Aires';
 
 
 -- ! 8. What query would you run to summarize the number of countries in each region? The query should display the name of the region and the number of countries. Also, the query should arrange the result by the number of countries in descending order.
