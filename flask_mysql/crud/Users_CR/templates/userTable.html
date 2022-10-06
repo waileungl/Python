@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Table</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="badge bg-secondary">Here is our users!</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>first name</th>
+                <th>last name</th>
+                <th>Email</th>
+                <th>Created_at</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for each_user in theUsers %}
+                <tr>
+                    <td>{{ each_user.first_name }}</td>
+                    <td>{{ each_user.last_name }}</td>
+                    <td>{{ each_user.email }}</td>
+                    <td>{{ each_user.created_at }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/" class="btn btn-primary">Add a User</a>
+</body>
+</html>
