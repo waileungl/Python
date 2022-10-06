@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninjas Table</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        #action{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">New Dojo</h1>
+    <form action="/addDojo" method="post">
+        <label for="name"></label>
+        <input type="text" name="name">
+        <button type="submit">Create</button>
+    </form>
+
+    <h1 style="text-align: center;"><span class="badge text-bg-light">All Dojos</span></h1>
+    <div class="card" style="width: 18rem; margin: 20px auto;">
+        {% for each_dojo in theDojos %}
+            <a href="/ninjaTable/{{ each_dojo.id }}/{{ each_dojo.name}}">{{ each_dojo.name }}</a><br>
+        {% endfor %}
+    </div>
+
+    <a href="/addNinja">Add Ninja</a>
+
+</body>
+</html>

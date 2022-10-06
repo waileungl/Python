@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninjas Table</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        #action{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;"><span class="badge text-bg-light">{{ dojoName }} Ninjas</span></h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for each_ninja in theNinjas %}
+                <tr>
+                    <td>{{ each_ninja.first_name }}</td>
+                    <td>{{ each_ninja.last_name }}</td>
+                    <td>{{ each_ninja.age }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/" class="btn btn-primary">Home</a>
+</body>
+</html>

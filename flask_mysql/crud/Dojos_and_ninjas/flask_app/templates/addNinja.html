@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        #form{
+            border: 4px gray solid;
+            width: 360px;
+            height: 400px;
+            margin: 30px auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        h1{
+            width: 500px;
+            margin: 0 auto;
+            font-size: 2em;
+            text-align: center;
+        }
+        body{
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <h1>New Ninja</h1>
+    </nav>
+    <form action="/create_new_ninja" method="POST">
+        <div id="form">
+            <div class="mb-3" style="display: flex; align-items: center; gap: 5px; width: 300px;">
+                <label class="form-label" for="dojo" >Dojos:</label>
+                <select name="dojo" id="dojo" class="form-select" aria-label="Default select example">
+                    {% for each_dojo in theDojos %}
+                    <option value={{each_dojo.id}}>{{ each_dojo.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3" style="display: flex; align-items: center; gap: 5px; width: 320px;">
+                <label class="form-label" for="fname" style="width: auto;">First Name:</label>
+                <input type="text" name="fname"  class="form-control">
+            </div>
+            <div class="mb-3" style="display: flex; align-items: center; gap: 5px;width: 320px;">
+                <label class="form-label" for="lname" style="width: 100px;">Last Name:</label>
+                <input type="text" name="lname"  class="form-control">
+            </div>
+            <div  class="mb-3 form-check" style="display: flex; align-items: center; gap: 5px;width: 320px;">
+                <label class="form-label" for="age" style="width: 50px;">Age:</label>
+                <input type="text" name="age"  class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Create</button>
+        </div>
+    </form> 
+    <a href="/">Home</a>
+</body>
+</html>
