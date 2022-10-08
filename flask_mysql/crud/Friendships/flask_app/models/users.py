@@ -10,7 +10,7 @@ class Users:
 
     @classmethod
     def get_all_friendships(cls):
-        query = "SELECT CONCAT(users.first_name, ' ', users.last_name) AS User, CONCAT(friends.first_name, ' ', friends.last_name) AS Friend FROM users LEFT JOIN friendships ON users.id = friendships.user_id LEFT JOIN users AS friends ON friends.id = friendships.friend_id;"
+        query = "SELECT CONCAT(users.first_name, ' ', users.last_name) AS User, CONCAT(friends.first_name, ' ', friends.last_name) AS Friend, friendships.friend_id AS friend_id, friendships.user_id AS user_id FROM users LEFT JOIN friendships ON users.id = friendships.user_id LEFT JOIN users AS friends ON friends.id = friendships.friend_id;"
         return connectToMySQL('friendships_schema').query_db(query)
 
     @classmethod

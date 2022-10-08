@@ -80,7 +80,11 @@
                     {% endfor %}
                 </select>
             </div>
+            <input type="hidden" name="friendships" value="{{ friendships }}">
             <button type="submit" class="btn btn-success">Create</button>
+            {% for message in get_flashed_messages() %}
+                {{ message }}
+            {% endfor %}
         </form>
     </div>
 
