@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <style>
+        *{
+            padding: 0;
+            margin: 5px;
+
+        }
+
+        body{
+            background-color: grey;
+        }
+        
+
+        #container{
+            display: flex;
+            flex-direction: column;
+            width: 30vw;
+            padding: 50px;
+            background-color: black;
+            color: aliceblue;
+            margin: 20px auto;
+
+        }
+
+        #formheading{
+            margin: 0 auto;
+        }
+        
+        #selectPoke{
+            display: inline-block;
+        }
+
+    </style>
+
+</head>
+<body>
+    <form action="/submit" method="post">
+        <main id="container" class="card">
+            {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+            {% if messages %}                            <!-- check if there are any messages -->
+                {% for message in messages %}            <!-- loop through the messages -->
+                    <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <h1 id="formheading">Dojo Survey</h1>
+            <label for="fullname">Name:</label>
+            <input type="text" name="fullname" placeholder="Your name here" value="">
+            <label for="location">Dojo Location:</label>
+            <select name="location">
+                <option value="placeholder" selected hidden>--Select A Location--</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Seattle">Seattle</option>
+                <option value="Online">Online</option>
+                <option value="Burbank">Burbank</option>
+                <option value="Bellevue">Bellevue</option>
+            </select>
+            <label for="language">Favorite Language:</label>
+            <select name="language">
+                <option value="placeholder" selected hidden>--Select A Language--</option>
+                <option value="Python">Python</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Java">Java</option>
+                <option value="C++">C++</option>
+            </select>
+            <label for="pokemon">Choose your starter pokemon</label>
+            <div>
+                <input id="selectPoke" type="radio" name="pokemon" id="Bulbasaur" value="Bulbasaur">
+                <label for="Bulbasaur">Bulbasaur</label><br>
+                <input id="selectPoke" type="radio" name="pokemon" id="Charmander" value="Charmander">
+                <label for="Charmander">Charmander</label><br>
+                <input id="selectPoke" type="radio" name="pokemon" id="Squirtle" value="Squirtle">
+                <label for="Squirtle">Squirtle</label><br>
+                <input type="hidden" name="pokemon" value="placeholder">
+            </div>
+            <label for="commentBox">Comments:</label>
+            <textarea style="height: 160px;" name="commentBox" cols="20" rows="10" placeholder="Leave Your Comments Here"></textarea>
+            <div id="agreeBoxes">
+                <input type="checkbox" name="agreeBox" id="agreeBox" value="1">
+                <label for="agreeBox">I agree to share these information with Coding Dojo</label>
+            </div>
+            <input type="submit">
+        </main>
+    </form> 
+
+    <div id="table">
+        <table class="table" style=" background-color: aliceblue; width: 200px; position: relative; bottom: 90vh;">
+            <thead class="table-dark">
+                <tr>
+                    <th>Current User</th>
+                </tr>
+            </thead>
+            {% for i in users %}
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="/get_info/{{ i.name }}">{{ i.name }}</a>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

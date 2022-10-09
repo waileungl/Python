@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portal</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <style>
+        *{
+
+            color: aliceblue;
+            text-align: center;
+        }
+
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: grey;
+        }
+
+        #table{
+            width: 50vw;
+        }
+
+        #back{
+            background-color: black;
+            border-radius: 30px;
+            padding: 5px 20px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>{{ info.name }}</h1>
+        <table class="table table-dark table-sm" id="table">
+            <tr>
+                <td>Dojo Location</td>
+                <td>{{ info.location }}</td>
+            </tr>
+            <tr>
+                <td>Favorite Language</td>
+                <td>{{ info.language }}</td>
+            </tr>
+            <tr>
+                <td>Your Starter Pokemon</td>
+                <td>{{ info.pokemon }}</td>
+            </tr>
+            <tr>
+                <td>Your Comments</td>
+                <td>{{ info.comment }}</td>
+            </tr>
+        </table>
+        {% if info.pokemon == 'Bulbasaur': %}
+            <img src="{{url_for('static', filename='/img/bulb.gif')}}" alt="b">
+        {% elif info.pokemon == 'Charmander': %}
+            <img src="{{url_for('static', filename='/img/charmander.gif')}}" alt="c">
+        {% elif info.pokemon == 'Squirtle' %}
+            <img src="{{url_for('static', filename='/img/squ.gif')}}" alt="s">
+        {% endif %}
+    </main>
+    <a href="/" type="button" class="btn btn-light" style="margin-top: 50px;" >Back</a>
+</body>
+</html>
