@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email list</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <style>
+        *{
+
+            color: aliceblue;
+            text-align: center;
+        }
+
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: grey;
+        }
+
+        #table{
+            width: 50vw;
+        }
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div style="padding: 30px; width: 700px; margin: 10px auto;  background-color: seagreen; border: 3px solid grey; color: aliceblue; text-align: center;">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <main>
+        <h1>Email Addresses Entered:</h1>
+        <table class="table table-grey table-sm" id="table">
+            {% for i in emails %}
+                <tr>
+                    <td>{{ i.email }}</td>
+                    <td>{{ i.created_at }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </main>
+    <a href="/" type="button" class="btn btn-light" style="margin-top: 50px;" >Back</a>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validator</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background-color: grey;
+        }
+        
+
+        #container{
+            display: flex;
+            flex-direction: column;
+            width: 30vw;
+            padding: 50px;
+            background-color: seagreen;
+            color: aliceblue;
+            margin: 20px auto;
+
+        }
+
+        #formheading{
+            margin: 0 auto;
+        }
+    </style>
+
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div style="padding: 30px; width: 400px; margin: 10px auto;  background-color: red; border: 3px solid grey; color: aliceblue; text-align: center;">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <form action="/submit" method="post">
+        <main id="container" class="card">
+            <h1 id="formheading">Email Validator</h1>
+            <label class="form-label" for="email">Email Address:</label>
+            <input style="height: 60px; padding: 20px;" type="text" name="email" placeholder="Your Email here" value="">
+            <input type="submit" class="btn btn-warning">
+        </main>
+    </form> 
+</body>
+</html>
