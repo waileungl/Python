@@ -12,10 +12,22 @@ class Email:
         self.updated_at = data['updated_at']
 
     @staticmethod
-    def validate_email(data):  
+    def validate_email(data):
         is_valid = True
+        if len(data['email']) == 0: 
+            flash("Please enter your email address!")
+            is_valid = False
+            return is_valid
         if not EMAIL_REGEX.match(data['email']): 
             flash("Invalid email address!")
+            is_valid = False
+        query = "SELECT * FROM email;"
+        all_email = connectToMySQL('email_validator_schema').query_db(query)
+        temp = []
+        for i in all_email:
+            temp.append(i['email'])
+        if data['email'] in temp:
+            flash("Email address is already existed!")
             is_valid = False
         return is_valid
 
@@ -28,3 +40,11 @@ class Email:
     def get_all_info(cls):
         query = "SELECT * FROM email;"
         return connectToMySQL('email_validator_schema').query_db(query)
+
+    @classmethod
+    def delete(cls, email):
+        data = {
+            "email":email
+        }
+        query = "DELETE FROM email WHERE email = %(email)s;"
+        return connectToMySQL('email_validator_schema').query_db(query, data)

@@ -42,6 +42,7 @@
                 <tr>
                     <td>{{ i.email }}</td>
                     <td>{{ i.created_at }}</td>
+                    <td> <a href="/delete/{{ i.email }}" style="color: white;">Delete</a> </td>
                 </tr>
             {% endfor %}
         </table>
