@@ -24,7 +24,6 @@ def add_user():
 
 @app.route("/create_friendship", methods=["POST"])
 def create_friendship():
-
     friendships = eval(request.form["friendships"])
     for i in friendships:
         Condition0 =  str(request.form["friends"]) == str(request.form["users"])
