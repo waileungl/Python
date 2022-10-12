@@ -1,0 +1,63 @@
+{% extends "add_recipes.html" %}
+
+
+{% block content %}
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Edit Recipe!</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a href="/dashboard" class="nav-link active" aria-current="page">Back to recipes dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/logout" class="nav-link active" aria-current="page">logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<form action="/edit_recipe" method="post">
+    <main id="main">
+        <div id="leftMain">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name: </label>
+                <input name="name" type="text" class="form-control" id="name" value="{{ recipe_id.name }}">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description: </label>
+                <textarea name="description" class="form-control" id="description" rows="4">{{ recipe_id.description }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="instruction" class="form-label">Instruction: </label>
+                <textarea name="instruction" class="form-control" id="instruction" rows="4">{{ recipe_id.instruction }}</textarea>
+            </div>
+        </div>
+        <div id="rightMain">
+            <div class="mb-3">
+                <label for="date" class="form-label">Date Cooked/Made: </label>
+                <input name="date" type="date" class="form-control" id="date" value={{ recipe_id.date }}.format('YYYY-MM-DD');>
+            </div>
+            <div>
+                <h3>Under 30 minutes?</h3>
+                <div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="under" id="select_time" value="yes" {% if recipe_id.under == "yes": %} checked {% endif %}>
+                        <label class="form-check-label" for="select_time">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="under" id="select_time" value="no" {% if recipe_id.under == "no": %} checked {% endif %}>
+                        <label class="form-check-label" for="select_time">
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <input type="hidden" name="recipe_id" value="{{ recipe_id.id }}">
+    <button type="submit"  class="btn btn-primary  my-5 mx-5">Submit</button>
+</form>
+{% endblock %}
