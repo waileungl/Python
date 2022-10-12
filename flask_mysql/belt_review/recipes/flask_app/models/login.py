@@ -56,17 +56,17 @@ class Users:
         return is_valid
 
     @classmethod
+    def register(cls, data):
+        query = "INSERT INTO users(first_name, last_name, email, hash, created_at, updated_at) VALUES(%(first_name)s, %(last_name)s, %(email)s, %(password)s, now(), now());"
+        return connectToMySQL(db).query_db(query, data)
+
+    @classmethod
     def validate_login(cls, data):
         query = "SELECT * FROM users WHERE email = %(email)s;"
         result = connectToMySQL(db).query_db(query,data)
         if len(result) < 1:
             return False
         return cls(result[0])
-
-    @classmethod
-    def register(cls, data):
-        query = "INSERT INTO users(first_name, last_name, email, hash, created_at, updated_at) VALUES(%(first_name)s, %(last_name)s, %(email)s, %(password)s, now(), now());"
-        return connectToMySQL(db).query_db(query, data)
 
     @classmethod
     def get_user_by_id(cls, data):

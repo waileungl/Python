@@ -10,7 +10,6 @@ def add_recipe():
         return redirect('/')
     return render_template("add_recipes.html")
 
-
 @app.route('/create_recipe', methods = ['POST'])
 def create_recipe():
     recipe_validation = Recipes.validate_recipe(request.form)
@@ -27,6 +26,11 @@ def create_recipe():
     Recipes.create_recipe(data)
     return redirect("/dashboard")
 
+@app.route('/recipes/show/<int:recipe_id>')
+def show_recipe(recipe_id):
+    if 'id' not in session:
+        return redirect('/')
+    return render_template("show_recipes.html", recipe_id = Recipes.get_recipe_by_id(recipe_id))
 
 @app.route('/recipes/edit/<int:recipe_id>')
 def edit_recipe(recipe_id):
@@ -47,12 +51,6 @@ def edit_recipe_submit():
     }
     Recipes.edit_recipe(data)
     return redirect("/dashboard")
-
-@app.route('/recipes/show/<int:recipe_id>')
-def show_recipe(recipe_id):
-    if 'id' not in session:
-        return redirect('/')
-    return render_template("show_recipes.html", recipe_id = Recipes.get_recipe_by_id(recipe_id))
 
 @app.route('/recipes/delete/<int:recipe_id>')
 def delete_recipe(recipe_id):

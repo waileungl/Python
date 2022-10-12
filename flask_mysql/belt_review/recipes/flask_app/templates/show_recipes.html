@@ -2,60 +2,36 @@
 
 
 {% block content %}
-<nav class="navbar navbar-expand-lg bg-light  d-flex justify-content-between align-items-center mt-3 mb-3">
-    <div class="container-fluid">
-        <h1>Welcome {{ session["first_name"] }}</h1>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="/dashboard" class="nav-link active" aria-current="page">Back to recipes dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/logout" class="nav-link active" aria-current="page">logout</a>
-                </li>
-            </ul>
-        </div>
+<nav id = "navbar" class="d-flex justify-content-between align-items-center">
+    <p class="h3 text-success">Welcome {{ session["first_name"] }}!</p>
+    <div  class="d-flex justify-content-end">
+        <a href="/dashboard" class="btn btn-secondary me-3 btn-sm">Back</a>
+        <a href="/logout" class="btn btn-outline-danger btn-sm">logout</a>
     </div>
 </nav>
-<div>
 
-</div>
-<p>{{ recipe_id.name }}</p>
-<p>Posted by {{ recipe_id.first_name }}</p>
-<div>
+<main id="main">
+    <div class="d-flex justify-content-between">
+        <h4>{{ recipe_id.name }}</h4>
+        <h6  class="badge rounded-pill text-bg-dark"><span class="align-middle m-2">Posted by {{ recipe_id.first_name }}</span></h6>
+    </div>
     <table class="table table-striped-column">
         <tr>
-            <td>
-            Description:
-            </td>
-            <td>
-            {{ recipe_id.description }}
-            </td>
+            <td><b>Description:</b></td>
+            <td>{{ recipe_id.description }}</td>
         </tr>
         <tr>
-            <td>
-            Under 30 minutes?:
-            </td>
-            <td>
-            {{ recipe_id.under }}
-            </td>
+            <td><b>Under 30 minutes?:</b></td>
+            <td>{{ recipe_id.under }}</td>
         </tr>
         <tr>
-            <td>
-            Instruction:
-            </td>
-            <td>
-            {{ recipe_id.instruction }}
-            </td>
+            <td><b>Instruction:</b></td>
+            <td>{{ recipe_id.instruction }}</td>
         </tr>
         <tr>
-            <td>
-            Date Made:
-            </td>
-            <td>
-            {{ recipe_id.date }}
-            </td>
+            <td><b>Date Made:</b></td>
+            <td>{{ recipe_id.date }}</td>
         </tr>
     </table>
-</div>
-{% endblock %}
+    {% endblock %}
+</main>

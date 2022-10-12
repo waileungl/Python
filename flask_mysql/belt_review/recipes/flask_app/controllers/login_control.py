@@ -1,7 +1,7 @@
 from flask_app import app
 from flask import render_template,redirect,request, session, flash
 from flask_app.models.login import Users
-from flask_app.controllers import receipes_control
+from flask_app.controllers import recipes_control
 from flask_bcrypt import Bcrypt
 from flask_app.models.recipes import Recipes
 

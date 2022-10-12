@@ -4,19 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Table</title>
-    <!-- CSS only -->
+    <title>Recipe Share</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<style>
-    #dashboard{
-        width: 65vw;
-        margin: 10vh auto;
-    }
-</style>
 <body>
     <div id="dashboard">
-        <p class="h2"> Welcome, {{ session["first_name"] }}</p>
+        <p class="h2 text-success"> Welcome, {{ session["first_name"] }}</p>
         <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
             <p class="h4">All posted recipes</p>
             <div>
