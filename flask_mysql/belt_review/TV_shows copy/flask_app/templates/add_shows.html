@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Shows</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    {% block content %}
+    <nav id = "navbar" class="d-flex justify-content-between align-items-center">
+            <p class="h3 text-success"> Add a New Show!</p>
+            <div  class="d-flex justify-content-end">
+                <a href="/shows" class="btn btn-secondary me-3 btn-sm">Back</a>
+                <a href="/logout" class="btn btn-outline-danger btn-sm">logout</a>
+            </div>
+    </nav>
+
+    <form action="/create_show" method="post">
+        <main id="main">
+            {% with messages = get_flashed_messages(category_filter = ["add_show"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="form-text">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div class="row">
+                <div class="mb-3 col">
+                    <label for="title" class="form-label">Title: </label>
+                    <input name="title" type="text" class="form-control" id="title">
+                </div>
+                <div class="mb-3 col">
+                    <label for="date" class="form-label">Release Date: </label>
+                    <input name="date" type="date" class="form-control" id="date" value="">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="network" class="form-label">Network: </label>
+                <input name="network" type="text" class="form-control" id="network">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description: </label>
+                <textarea name="description" class="form-control" id="description" rows="3"></textarea>
+            </div>
+            <button type="submit"  class="btn btn-success my-3 col-3">Add</button>
+        </main>
+    </form>
+    {% endblock %}
+
+</body>
+
+</html>

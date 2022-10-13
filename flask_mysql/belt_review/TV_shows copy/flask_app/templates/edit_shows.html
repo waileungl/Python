@@ -1,0 +1,46 @@
+{% extends "add_shows.html" %}
+
+
+{% block content %}
+<nav id = "navbar" class="d-flex justify-content-between align-items-center">
+    <p class="h3 text-success"> Edit Show</p>
+    <div  class="d-flex justify-content-end">
+        <a href="/shows" class="btn btn-secondary me-3 btn-sm">Back</a>
+        <a href="/logout" class="btn btn-outline-danger btn-sm">logout</a>
+    </div>
+</nav>
+
+<form action="/edit_show" method="post">
+    <main id="main">
+        {% with messages = get_flashed_messages(category_filter = ["add_show"]) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="form-text">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="row">
+            <div class="mb-3 col">
+                <label for="title col" class="form-label">Title: </label>
+                <input name="title" type="text" class="form-control" id="title" value="{{ show_info_pack[1].title }}">
+            </div>
+            <div class="mb-3 col">
+                <label for="date" class="form-label">Release Date: </label>
+                <input name="date" type="date" class="form-control" id="date" value="{{ show_info_pack[1].date }}".format('YYYY-MM-DD');>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="network" class="form-label">Network: </label>
+            <input name="network" type="text" class="form-control" id="network" value= "{{ show_info_pack[1].network }}">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description: </label>
+            <textarea name="description" class="form-control" id="description" rows="3">{{ show_info_pack[1].description }}</textarea>
+        </div>
+        <input type="hidden" name="show_id" value="{{ show_info_pack[1].id }}">
+        <button type="submit"  class="btn btn-warning my-3 col-3">Update</button>
+    </main>
+</form>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "add_shows.html" %}
+
+
+{% block content %}
+<nav id = "navbar" class="d-flex justify-content-between align-items-center">
+    <p></p>
+    <div  class="d-flex justify-content-end">
+        <a href="/shows" class="btn btn-secondary me-3 btn-sm">Back</a>
+        <a href="/logout" class="btn btn-outline-danger btn-sm">logout</a>
+    </div>
+</nav>
+
+<main id="main">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2>{{ show_info_pack[1].title }}</h2>
+        <div><span  class="badge text-bg-success">Liked by {{ show_info_pack[0] }}</span></div>
+    </div>
+    <table class="table table-striped-column">
+        <tr>
+            <td><b>Network:</b></td>
+            <td>{{ show_info_pack[1].network }}</td>
+        </tr>
+        <tr>
+            <td><b>Release Date:</b></td>
+            <td>{{ show_info_pack[1].date }}</td>
+        </tr>
+        <tr>
+            <td><b>Description:</b></td>
+            <td>{{ show_info_pack[1].description }}</td>
+        </tr>
+        <tr>
+            <td><b>Posted By:</b></td>
+            <td>{{ show_info_pack[2].first_name }} {{ show_info_pack[2].last_name }}</td>
+        </tr>
+    </table>
+    {% endblock %}
+</main>
