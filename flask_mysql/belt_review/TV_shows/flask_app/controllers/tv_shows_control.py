@@ -29,13 +29,19 @@ def create_show():
 def show_show(show_id):
     if 'id' not in session:
         return redirect('/')
-    return render_template("show_shows.html", show_id = Shows.get_show_by_id(show_id))
+    data = {
+        "id": show_id
+    }
+    return render_template("show_shows.html", show_info_pack = Shows.get_show_info_pack_by_id(data))
 
 @app.route('/shows/edit/<int:show_id>')
 def edit_show(show_id):
     if 'id' not in session:
         return redirect('/')
-    return render_template("edit_shows.html", show_id = Shows.get_show_by_id(show_id))
+    data = {
+        "id": show_id
+    }
+    return render_template("edit_shows.html", show_info_pack = Shows.get_show_info_pack_by_id(data))
 
 @app.route('/edit_show', methods = ['POST'])
 def edit_show_submit():
@@ -59,7 +65,7 @@ def delete_show(show_id):
     if 'id' not in session:
         return redirect('/')
     data = {
-        "id":show_id
+        "show_id": show_id,
     }
     Shows.delete_show(data)
     return redirect("/shows")

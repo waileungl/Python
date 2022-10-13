@@ -31,3 +31,8 @@
     width: 35vw;
     margin: 4vh auto;
 }
+
+#likeCount{
+    height: 50px;
+    text-align: center;
+}

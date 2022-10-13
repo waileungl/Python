@@ -49,7 +49,7 @@ def profile():
     data = {
         "id": session["id"]
     }
-    return render_template('shows.html', shows = Shows.get_all_shows(data), liked_shows = Shows.get_liked_shows(data))
+    return render_template('shows.html', dashboard_info_pack = Shows.get_all_info_for_dashboard(data))
 
 @app.route('/logout')
 def logout():

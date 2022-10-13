@@ -29,20 +29,23 @@
                 </tr>
             </thead>
             <tbody>
-                {% for show in shows[0] %}
+                <!-- dashboard_info_pack[0] is all shows in database -->
+                {% for show in dashboard_info_pack[0] %}
                     <tr>
                         <td>{{ show.title }}</td>
                         <td>{{ show.network }}</td>
                         <td>{{ show.date }}</td>
                         <td id="action">
                             <a href="/shows/{{ show.id }}">Show</a>
+                            <!-- check if the show is created by this user -->
                             {% if show.owner_id == session["id"]: %}
                             <a href="/shows/edit/{{ show.id }}" class="ms-2">Edit</a>
                             <a href="/shows/delete/{{ show.id }}" class="ms-2">Delete</a>
                             {% endif %}
                         </td>
                         <td>
-                            {% if show.id not in shows[1] %}
+                            <!-- dashboard_info_pack[1] is all liked shows_id by this user -->
+                            {% if show.id not in dashboard_info_pack[1] %}
                             <a href="/shows/like/{{ show.id }}">like</a>
                             {% else %}
                             <a href="/shows/unlike/{{ show.id }}">unlike</a>
