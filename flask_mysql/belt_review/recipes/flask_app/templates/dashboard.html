@@ -32,7 +32,7 @@
                     <tr>
                         <td>{{ recipe.name }}</td>
                         <td>{{ recipe.under }}</td>
-                        <td>{{ recipe.first_name }}</td>
+                        <td>{{ recipe.user_name }}</td>
                         <td id="action">
                             <a href="/recipes/show/{{ recipe.id }}">Show</a>
                             {% if recipe.user_id == session["id"]: %}

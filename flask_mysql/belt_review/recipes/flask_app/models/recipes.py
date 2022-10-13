@@ -1,3 +1,4 @@
+from unittest import result
 from flask_app import app
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
@@ -7,6 +8,7 @@ class Recipes:
     def __init__(self, data):
         self.id = data['id']
         self.name = data['name']
+        self.user_name = data['first_name']
         self.description = data['description']
         self.instruction = data['instruction']
         self.date = data['date']
@@ -28,12 +30,17 @@ class Recipes:
     @classmethod
     def get_all_recipes(cls):
         query = "SELECT * FROM recipes LEFT JOIN users ON users.id = recipes.user_id;"
-        return connectToMySQL(db).query_db(query)
+        recipes = []
+        result = connectToMySQL(db).query_db(query)
+        for row in result:
+            recipes.append(cls(row))
+        return recipes
 
     @classmethod
     def get_recipe_by_id(cls, recipe_id):
         query = f"SELECT * FROM recipes LEFT JOIN users ON users.id = recipes.user_id WHERE recipes.id = {recipe_id};"
-        return connectToMySQL(db).query_db(query)[0]
+        result = connectToMySQL(db).query_db(query)
+        return cls(result[0])
 
     @classmethod
     def delete_recipe(cls, data):

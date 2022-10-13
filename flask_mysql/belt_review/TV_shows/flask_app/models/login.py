@@ -6,7 +6,7 @@ bcrypt = Bcrypt(app)
 from flask import flash
 import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
-db = "recipe_schema"
+db = "tv_shows_schema"
 
 class Users:
     def __init__(self, data):
@@ -21,11 +21,11 @@ class Users:
     @staticmethod
     def validate_registration(input):
         is_valid = True
-        if len(input['first_name']) < 3:
-            flash("First name must be at least 3 character.", "registration")
+        if len(input['first_name']) < 2:
+            flash("First name must be at least 2 characters.", "registration")
             is_valid = False
         if len(input['last_name']) < 2:
-            flash("Last name must be at least 2 character.", "registration")
+            flash("Last name must be at least 2 characters.", "registration")
             is_valid = False
         if not EMAIL_REGEX.match(input['email']): 
             flash("Invalid email address!", "registration")
@@ -39,7 +39,7 @@ class Users:
             flash("Email address is already existed!", "registration")
             is_valid = False
         if len(input['password']) < 8:
-            flash("Password must be at least 8 character.", "registration")
+            flash("Password must be at least 8 characters.", "registration")
             is_valid = False
         char_check = 0
         for char in input['password']:

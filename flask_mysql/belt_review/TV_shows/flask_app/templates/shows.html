@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Shows</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div id="dashboard">
+        <p class="h2 text-success"> Welcome, {{ session["user_name"] }}</p>
+        <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
+            <p class="h4">All TV Shows:</p>
+            <div>
+                <a href="/shows/new" class="btn btn-success me-5 btn-sm">+ Create</a>
+                <a href="/logout" class="btn btn-outline-danger btn-sm">logout</a>
+            </div>
+        </div>
+        <table class="table w-100 table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th class="col-3">Title</th>
+                    <th class="col-3">Network</th>
+                    <th class="col-2">Release Date</th>
+                    <th class="col-2">Actions</th>
+                    <th class="col-2">Like!</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for show in shows[0] %}
+                    <tr>
+                        <td>{{ show.title }}</td>
+                        <td>{{ show.network }}</td>
+                        <td>{{ show.date }}</td>
+                        <td id="action">
+                            <a href="/shows/{{ show.id }}">Show</a>
+                            {% if show.owner_id == session["id"]: %}
+                            <a href="/shows/edit/{{ show.id }}" class="ms-2">Edit</a>
+                            <a href="/shows/delete/{{ show.id }}" class="ms-2">Delete</a>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if show.id not in shows[1] %}
+                            <a href="/shows/like/{{ show.id }}">like</a>
+                            {% else %}
+                            <a href="/shows/unlike/{{ show.id }}">unlike</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

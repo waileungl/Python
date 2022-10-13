@@ -12,6 +12,15 @@
 
 <form action="/edit_recipe" method="post">
     <main id="main">
+        {% with messages = get_flashed_messages(category_filter = ["add_recipe"]) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="form-text">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         <div class="row">
             <div class="mb-3 col">
                 <label for="name col" class="form-label">Name: </label>
